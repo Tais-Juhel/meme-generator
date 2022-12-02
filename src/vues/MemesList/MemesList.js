@@ -10,8 +10,9 @@ const MemesList = () => {
   const [allMemesSearch, setAllMemesSearch] = useState([]);
   const [memesColumns, setMemesColumns] = useState([]);
 
+  const [myChoice, setMyChoice] = useState(2)
+
   window.onresize = () => {
-    console.log(howManyColumn())
     columnSeparator(allMemesSearch)
     memesFound();
   };
@@ -24,7 +25,7 @@ const MemesList = () => {
     } else if (window.innerWidth > 768) {
       return 3;
     } else {
-      return 1;
+      return myChoice;
     }
   };
 
@@ -73,7 +74,7 @@ const MemesList = () => {
 
   const memesFound = () => {
     if (memesColumns[0]) {
-      if (memesColumns[howManyColumn() - 1].length > 0) {
+      if (memesColumns[0].length > 0) {
         return memesColumns.map((column, columnIndex) => {
           return (
             <div className="card-column" key={columnIndex}>
@@ -106,6 +107,12 @@ const MemesList = () => {
     }
   };
 
+  const testNbColumn = () => {
+    myChoice === 2 ? setMyChoice(1) : setMyChoice(2)
+    columnSeparator(allMemesSearch)
+    memesFound();
+  }
+
   return (
     <div className="memes-list">
       <div className="search-bar">
@@ -117,6 +124,7 @@ const MemesList = () => {
         />
         <button>🔍</button>
       </div>
+      <button onClick={testNbColumn}>1or2</button>
       <div className="cards">
         {memesFound()}
         {/* {memesColumns.map((column, columnIndex) => {
