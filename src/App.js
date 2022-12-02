@@ -1,13 +1,13 @@
-import React from 'react';
-import './App.css';
-import Asval from './components/Asval/Asval';
+import MemesList from './vues/MemesList/MemesList';
+import './App.scss'
 
 function App() {
+
   return (
-    <div className="App">
-      <Asval></Asval>
+    <div>
+      <MemesList></MemesList>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

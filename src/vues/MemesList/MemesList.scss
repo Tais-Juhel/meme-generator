@@ -1,0 +1,74 @@
+.memes-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 72px;
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        margin: 16px 0;
+        padding: 8px 16px;
+        border-radius: 50px;
+        box-shadow: 0 0 5px 0 lightgrey;
+
+        input {
+            width: 300px;
+        }
+
+        button {
+            background-color: #ffffff;
+        }
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        cursor: pointer;
+
+        .card-column {
+            padding: 0 8px;
+            .card {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                width: 150px;
+                padding: 16px;
+                padding-bottom: 16px;
+                border-radius: 10px;
+                box-shadow: 0 0 5px 0 lightgrey;
+                margin: 16px 0;
+                transition: all 200ms ease;
+
+                &:hover {
+                    box-shadow: 0 0 15px 0 lightgrey;
+                }
+
+                .frame {
+                    width: 100%;
+                    overflow: hidden;
+                    border-radius: 5px;
+                    padding-bottom: 16px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                h5 {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                @media only screen and (min-width: 1440px) {
+                    width: 200px;
+                }
+                @media only screen and (max-width: 768px) {
+                    width: 80vw;
+                }
+            }
+        }
+    }
+}
