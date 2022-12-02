@@ -10,22 +10,20 @@ const MemesList = () => {
   const [allMemesSearch, setAllMemesSearch] = useState([]);
   const [memesColumns, setMemesColumns] = useState([]);
 
-  const [myChoice, setMyChoice] = useState(2)
-
   window.onresize = () => {
-    columnSeparator(allMemesSearch)
+    columnSeparator(allMemesSearch);
     memesFound();
   };
 
   const howManyColumn = () => {
     if (window.innerWidth > 1440) {
-      return 5;
+      return 6;
     } else if (window.innerWidth > 1024) {
-      return 4;
+      return 5;
     } else if (window.innerWidth > 768) {
       return 3;
     } else {
-      return myChoice;
+      return 2;
     }
   };
 
@@ -34,7 +32,7 @@ const MemesList = () => {
       const result = res.data.data.memes;
       localStorage.setItem("allMemes", result);
       setAllMemes(result);
-      setAllMemesSearch(result)
+      setAllMemesSearch(result);
       // const separator = result.length / howManyColumn();
       // const tab = [];
       // for (let i = 0; i < howManyColumn(); i++) {
@@ -42,7 +40,7 @@ const MemesList = () => {
       // }
       // localStorage.setItem("memesColumns", tab);
       // setMemesColumns(tab);
-      columnSeparator(result)
+      columnSeparator(result);
     });
   }, []);
 
@@ -58,7 +56,7 @@ const MemesList = () => {
     //   tab.push(newMemesList.slice(separator * i, separator * (i + 1)));
     // }
     // setMemesColumns(tab);
-    columnSeparator(newMemesList)
+    columnSeparator(newMemesList);
     memesFound();
   }
 
@@ -88,6 +86,7 @@ const MemesList = () => {
                   </div>
                 );
               })}
+              <div className="card" style={{ flex: 1, backgroundColor: "#F3F3F3" }}></div>
             </div>
           );
         });
@@ -107,12 +106,6 @@ const MemesList = () => {
     }
   };
 
-  const testNbColumn = () => {
-    myChoice === 2 ? setMyChoice(1) : setMyChoice(2)
-    columnSeparator(allMemesSearch)
-    memesFound();
-  }
-
   return (
     <div className="memes-list">
       <div className="search-bar">
@@ -124,7 +117,6 @@ const MemesList = () => {
         />
         <button>🔍</button>
       </div>
-      <button onClick={testNbColumn}>1or2</button>
       <div className="cards">
         {memesFound()}
         {/* {memesColumns.map((column, columnIndex) => {

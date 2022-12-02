@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 72px;
+    padding: 0 16px;
 
     .search-bar {
         display: flex;
@@ -28,7 +28,10 @@
         cursor: pointer;
 
         .card-column {
+            display: flex;
+            flex-direction: column;
             padding: 0 8px;
+
             .card {
                 display: flex;
                 flex-direction: column;
@@ -39,7 +42,7 @@
                 padding-bottom: 16px;
                 border-radius: 10px;
                 box-shadow: 0 0 5px 0 lightgrey;
-                margin: 16px 0;
+                margin: 8px 0;
                 transition: all 200ms ease;
 
                 &:hover {
