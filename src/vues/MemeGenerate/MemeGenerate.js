@@ -7,7 +7,6 @@ const MemeGenerate = () => {
     return (
         <div className="meme-generate">
             <img src={meme} alt="meme" />
-            <a href="https://i.imgflip.com/77blho.jpg" download>Telecharger</a>
         </div>
     )
 }
