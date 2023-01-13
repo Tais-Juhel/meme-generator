@@ -1,11 +1,18 @@
+import './App.scss';
 import MemesList from './vues/MemesList/MemesList';
-import './App.scss'
+import { Routes, Route } from 'react-router-dom';
+import MemeEdit from './vues/MemeEdit/MemeEdit';
+import MemeGenerate from './vues/MemeGenerate/MemeGenerate';
 
 function App() {
 
   return (
-    <div>
-      <MemesList></MemesList>
+    <div className='app'>
+      <Routes>
+        <Route path="/" element={<MemesList/>} />
+        <Route path="/:id" element={<MemeEdit/>} />
+        <Route path="/generate" element={<MemeGenerate/>} />
+      </Routes>
     </div>
   )
 }

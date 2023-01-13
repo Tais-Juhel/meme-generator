@@ -1,12 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import axios from "axios";
 import "./MemesList.scss";
 
 const MemesList = () => {
-  const [allMemes, setAllMemes] = useState(
-    localStorage.getItem("allMemes") ? localStorage.getItem("allMemes") : []
-  );
   const [allMemesSearch, setAllMemesSearch] = useState([]);
   const [memesColumns, setMemesColumns] = useState([]);
 
@@ -30,8 +28,7 @@ const MemesList = () => {
   useEffect(() => {
     axios.get("https://api.imgflip.com/get_memes").then((res) => {
       const result = res.data.data.memes;
-      localStorage.setItem("allMemes", result);
-      setAllMemes(result);
+      localStorage.setItem("allMemes", JSON.stringify(result));
       setAllMemesSearch(result);
       // const separator = result.length / howManyColumn();
       // const tab = [];
@@ -46,7 +43,7 @@ const MemesList = () => {
 
   function searchByName() {
     const value = document.querySelector(".searchMeme").value;
-    const newMemesList = allMemes.filter(
+    const newMemesList = localStorage.getItem("allMemes").filter(
       (meme) => meme.name.toLowerCase().indexOf(value.toLowerCase()) !== -1
     );
     setAllMemesSearch(newMemesList);
@@ -78,12 +75,12 @@ const MemesList = () => {
             <div className="card-column" key={columnIndex}>
               {column.map((meme) => {
                 return (
-                  <div className="card" key={meme.id}>
+                  <Link to={"/"+meme.id} className="card" key={meme.id}>
                     <div className="frame">
                       <img src={meme.url} />
                     </div>
                     <h5>{meme.name}</h5>
-                  </div>
+                  </Link>
                 );
               })}
               <div className="card" style={{ flex: 1, backgroundColor: "#F3F3F3" }}></div>
